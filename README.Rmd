@@ -15,6 +15,37 @@ An R client for consuming APIs that follow the [jsonapi.org spec][spec].
 * jsonapi home: [http://jsonapi.org/](http://jsonapi.org/)
 * jsonapi spec: [http://jsonapi.org/format/](http://jsonapi.org/format/)
 
-Nothing to see yet...
+## Setup a jsonapi 
+
+* `git clone git@github.com:endpoints/endpoints-example.git`
+* `cd endpoints-example`
+* `npm install`
+* `npm start`
+
+Which should start up a server. Then point your browser to e.g.:
+
+* http://localhost:8080/v1
+* http://localhost:8080/v1/authors
+* http://localhost:8080/v1/authors/1
+
+## Install jsonapi R client
+
+```{r}
+if (!require("devtools")) {
+  install.packages("devtools")
+}
+devtools::install_github("sckott/jsonapi")
+```
+
+```{r}
+library("jsonapi")
+```
+
+## Heartbeat
+
+```{r}
+
+```
+
 
 [spec]: http://jsonapi.org/format/

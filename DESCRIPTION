@@ -8,4 +8,5 @@ Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
 License: MIT + file LICENSE
 Imports:
     httr (>= 1.0.0),
+    R6,
     jsonlite
