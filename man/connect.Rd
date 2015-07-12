@@ -18,8 +18,7 @@ Connection
 }
 \examples{
 library("httr")
-conn <- connect()
-conn
+(conn <- connect())
 conn$url
 conn$version
 conn$content_type
