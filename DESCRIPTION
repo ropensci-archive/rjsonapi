@@ -2,7 +2,7 @@ Package: jsonapi
 Title: Consumer for APIs that Follow the 'Jsonapi' Specification
 Description: Consumer for APIs that Follow the 'Jsonapi' Specification.
     Just consumes data - does not do server stuff.
-Version: 0.0.1.9000
+Version: 0.0.2.9000
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
@@ -10,3 +10,4 @@ Imports:
     httr (>= 1.0.0),
     R6,
     jsonlite
+RoxygenNote: 5.0.1

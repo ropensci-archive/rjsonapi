@@ -1,6 +1,6 @@
 #' Connection
 #'
-#' @export
+#' @keywords internal
 #' @param url Base url, e.g., \code{http://localhost:8080}
 #' @param version API version, e.g, \code{v1}
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
