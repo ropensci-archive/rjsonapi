@@ -10,7 +10,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-An R client for consuming APIs that follow the [jsonapi.org spec][spec].
+An R client for consuming APIs that follow the [jsonapi.org spec][spec]. This library
+does not do server side JSONAPI things.
 
 * jsonapi home: [http://jsonapi.org/](http://jsonapi.org/)
 * jsonapi spec: [http://jsonapi.org/format/](http://jsonapi.org/format/)
@@ -30,7 +31,7 @@ Which should start up a server. Then point your browser to e.g.:
 
 ## Install jsonapi R client
 
-```{r}
+```{r eval=FALSE}
 if (!require("devtools")) {
   install.packages("devtools")
 }
