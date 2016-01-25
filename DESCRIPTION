@@ -1,7 +1,7 @@
 Package: jsonapi
-Title: Consumer for APIs that Follow the 'Jsonapi' Specification
-Description: Consumer for APIs that Follow the 'Jsonapi' Specification.
-    Just consumes data - does not do server stuff.
+Title: Consumer for APIs that Follow the 'JSONAPI' Specification
+Description: Consumer for APIs that Follow the 'JSONAPI' Specification.
+    Just consumes data - does not do server side things.
 Version: 0.0.2.9000
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
