@@ -1,2 +1,2 @@
 library("testthat")
-test_check("jsonapi")
+test_check("rjsonapi")

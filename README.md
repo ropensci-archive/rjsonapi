@@ -1,18 +1,18 @@
-jsonapi
-=======
+rjsonapi
+========
 
 
 
-[![Build Status](https://api.travis-ci.org/sckott/jsonapi.png)](https://travis-ci.org/sckott/jsonapi)
-[![codecov.io](https://codecov.io/github/sckott/jsonapi/coverage.svg?branch=master)](https://codecov.io/github/sckott/jsonapi?branch=master)
+[![Build Status](https://api.travis-ci.org/sckott/rjsonapi.png)](https://travis-ci.org/sckott/rjsonapi)
+[![codecov.io](https://codecov.io/github/sckott/rjsonapi/coverage.svg?branch=master)](https://codecov.io/github/sckott/rjsonapi?branch=master)
 
-An R client for consuming APIs that follow the [jsonapi.org spec][spec]. This library
+An R client for consuming APIs that follow the [JSONAPI spec][spec]. This library
 does not do server side JSONAPI things.
 
-* jsonapi home: [http://jsonapi.org/](http://jsonapi.org/)
-* jsonapi spec: [http://jsonapi.org/format/](http://jsonapi.org/format/)
+* rjsonapi home: [http://jsonapi.org/](http://jsonapi.org/)
+* rjsonapi spec: [http://jsonapi.org/format/](http://jsonapi.org/format/)
 
-## Setup a jsonapi
+## Setup a JSONAPI
 
 * `git clone git@github.com:endpoints/endpoints-example.git` (or via `hub`: `hub clone endpoints/endpoints-example`)
 * `cd endpoints-example`
@@ -25,19 +25,19 @@ Which should start up a server. Then point your browser to e.g.:
 * [http://localhost:8088/v1/authors](http://localhost:8088/v1/authors)
 * [http://localhost:8088/v1/authors/1](http://localhost:8088/v1/authors/1)
 
-## Install jsonapi R client
+## Install rjsonapi R client
 
 
 ```r
 if (!require("devtools")) {
   install.packages("devtools")
 }
-devtools::install_github("sckott/jsonapi")
+devtools::install_github("sckott/rjsonapi")
 ```
 
 
 ```r
-library("jsonapi")
+library("rjsonapi")
 ```
 
 ## Connect
@@ -89,7 +89,7 @@ conn$status()
 #> [1] "success: (200) OK"
 ```
 
-Get routes (not available in standard jsonapi i think)
+Get routes (not available in a standard JSONAPI i think)
 
 
 ```r
@@ -125,8 +125,8 @@ conn$route("authors")
 #> 1  1 authors J. R. R. Tolkien               1892-01-03
 #> 2  2 authors    J. K. Rowling               1965-07-31
 #>   attributes.date_of_death attributes.created_at attributes.updated_at
-#> 1               1973-09-02   2016-01-25 23:13:41   2016-01-25 23:13:41
-#> 2                     <NA>   2016-01-25 23:13:41   2016-01-25 23:13:41
+#> 1               1973-09-02   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 2                     <NA>   2016-01-26 01:54:06   2016-01-26 01:54:06
 #>      relationships.books.links.self relationships.books.links.related
 #> 1 /v1/authors/1/relationships/books               /v1/authors/1/books
 #> 2 /v1/authors/2/relationships/books               /v1/authors/2/books
@@ -163,10 +163,10 @@ conn$route("authors/1")
 #> [1] "1973-09-02"
 #> 
 #> $data$attributes$created_at
-#> [1] "2016-01-25 23:13:41"
+#> [1] "2016-01-26 01:54:06"
 #> 
 #> $data$attributes$updated_at
-#> [1] "2016-01-25 23:13:41"
+#> [1] "2016-01-26 01:54:06"
 #> 
 #> 
 #> $data$relationships
@@ -208,10 +208,10 @@ conn$route("authors/1/books")
 #> 3  3 books                1955-10-20         Return of the King
 #> 4 11 books                1937-09-21                 The Hobbit
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-25 23:13:41   2016-01-25 23:13:41
-#> 2   2016-01-25 23:13:41   2016-01-25 23:13:41
-#> 3   2016-01-25 23:13:41   2016-01-25 23:13:41
-#> 4   2016-01-25 23:13:41   2016-01-25 23:13:41
+#> 1   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 2   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 3   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 4   2016-01-26 01:54:06   2016-01-26 01:54:06
 #>       relationships.chapters.links.self
 #> 1  /v1/authors/1/relationships/chapters
 #> 2  /v1/authors/2/relationships/chapters
@@ -285,8 +285,8 @@ conn$route("authors/1/photos")
 #> 1                  http://upload.wikimedia.org/wikipedia/commons/b/b4/Tolkien_1916.jpg
 #> 2 http://upload.wikimedia.org/wikipedia/commons/5/5b/Mabel_Suffield_Christmas_Card.jpg
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-25 23:13:41   2016-01-25 23:13:41
-#> 2   2016-01-25 23:13:41   2016-01-25 23:13:41
+#> 1   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 2   2016-01-26 01:54:06   2016-01-26 01:54:06
 #>      relationships.imageable.links.self
 #> 1 /v1/authors/1/relationships/imageable
 #> 2 /v1/authors/2/relationships/imageable

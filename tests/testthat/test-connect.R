@@ -1,4 +1,4 @@
-context("jsonapi::connect functionality")
+context("rjsonapi::connect functionality")
 
 test_that("connect to a jsonapi works", {
   skip_on_cran()
