@@ -11,7 +11,8 @@ BugReports: https://github.com/sckott/rjsonapi/issues
 Imports:
     httr (>= 1.0.0),
     R6,
-    jsonlite
+    jsonlite,
+    plumber
 Suggests:
     testthat
 RoxygenNote: 5.0.1

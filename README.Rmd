@@ -105,4 +105,22 @@ A different sub-part under that document: `photos`
 conn$route("authors/1/photos")
 ```
 
+## Experimental - startup a server from R
+
+In one R session: 
+
+```{r eval=FALSE}
+jsonapi_server()
+#> Starting server to listen on port 8000
+```
+
+Then in another R session:
+
+```{r eval=FALSE}
+library("httr")
+GET("http://localhost:8000/books")
+GET("http://localhost:8000/books?book=1")
+GET("http://localhost:8000/books?book=2")
+```
+
 [spec]: http://jsonapi.org/format/

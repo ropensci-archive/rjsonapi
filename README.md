@@ -47,20 +47,19 @@ library("rjsonapi")
 (conn <- connect("http://localhost:8088/v1"))
 #> <jsonapi_connection>
 #>   Public:
-#>     base_url: function
+#>     base_url: function (...) 
 #>     content_type: request
 #>     endpt: 
-#>     initialize: function
+#>     initialize: function (url, version, content_type, endpt, query) 
 #>     query: list
-#>     route: function
-#>     routes: function
-#>     status: function
+#>     route: function (endpt, query, error_handler = private$check, ...) 
+#>     routes: function (...) 
+#>     status: function (...) 
 #>     url: http://localhost:8088/v1
 #>     version: v1
-#> 
 #>   Private:
-#>     check: function
-#>     fromjson: function
+#>     check: function (x, ...) 
+#>     fromjson: function (...)
 ```
 
 ## Get API info
@@ -125,8 +124,8 @@ conn$route("authors")
 #> 1  1 authors J. R. R. Tolkien               1892-01-03
 #> 2  2 authors    J. K. Rowling               1965-07-31
 #>   attributes.date_of_death attributes.created_at attributes.updated_at
-#> 1               1973-09-02   2016-01-26 01:54:06   2016-01-26 01:54:06
-#> 2                     <NA>   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 1               1973-09-02   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 2                     <NA>   2016-01-28 00:35:03   2016-01-28 00:35:03
 #>      relationships.books.links.self relationships.books.links.related
 #> 1 /v1/authors/1/relationships/books               /v1/authors/1/books
 #> 2 /v1/authors/2/relationships/books               /v1/authors/2/books
@@ -163,10 +162,10 @@ conn$route("authors/1")
 #> [1] "1973-09-02"
 #> 
 #> $data$attributes$created_at
-#> [1] "2016-01-26 01:54:06"
+#> [1] "2016-01-28 00:35:03"
 #> 
 #> $data$attributes$updated_at
-#> [1] "2016-01-26 01:54:06"
+#> [1] "2016-01-28 00:35:03"
 #> 
 #> 
 #> $data$relationships
@@ -208,10 +207,10 @@ conn$route("authors/1/books")
 #> 3  3 books                1955-10-20         Return of the King
 #> 4 11 books                1937-09-21                 The Hobbit
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-26 01:54:06   2016-01-26 01:54:06
-#> 2   2016-01-26 01:54:06   2016-01-26 01:54:06
-#> 3   2016-01-26 01:54:06   2016-01-26 01:54:06
-#> 4   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 1   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 2   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 3   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 4   2016-01-28 00:35:03   2016-01-28 00:35:03
 #>       relationships.chapters.links.self
 #> 1  /v1/authors/1/relationships/chapters
 #> 2  /v1/authors/2/relationships/chapters
@@ -285,14 +284,34 @@ conn$route("authors/1/photos")
 #> 1                  http://upload.wikimedia.org/wikipedia/commons/b/b4/Tolkien_1916.jpg
 #> 2 http://upload.wikimedia.org/wikipedia/commons/5/5b/Mabel_Suffield_Christmas_Card.jpg
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-26 01:54:06   2016-01-26 01:54:06
-#> 2   2016-01-26 01:54:06   2016-01-26 01:54:06
+#> 1   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 2   2016-01-28 00:35:03   2016-01-28 00:35:03
 #>      relationships.imageable.links.self
 #> 1 /v1/authors/1/relationships/imageable
 #> 2 /v1/authors/2/relationships/imageable
 #>   relationships.imageable.links.related          self
 #> 1               /v1/authors/1/imageable /v1/authors/1
 #> 2               /v1/authors/2/imageable /v1/authors/2
+```
+
+## Experimental - startup a server from R
+
+In one R session: 
+
+
+```r
+jsonapi_server()
+#> Starting server to listen on port 8000
+```
+
+Then in another R session:
+
+
+```r
+library("httr")
+GET("http://localhost:8000/books")
+GET("http://localhost:8000/books?book=1")
+GET("http://localhost:8000/books?book=2")
 ```
 
 [spec]: http://jsonapi.org/format/
