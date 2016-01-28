@@ -124,8 +124,8 @@ conn$route("authors")
 #> 1  1 authors J. R. R. Tolkien               1892-01-03
 #> 2  2 authors    J. K. Rowling               1965-07-31
 #>   attributes.date_of_death attributes.created_at attributes.updated_at
-#> 1               1973-09-02   2016-01-28 00:47:36   2016-01-28 00:47:36
-#> 2                     <NA>   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 1               1973-09-02   2016-01-28 06:07:15   2016-01-28 06:07:15
+#> 2                     <NA>   2016-01-28 06:07:15   2016-01-28 06:07:15
 #>      relationships.books.links.self relationships.books.links.related
 #> 1 /v1/authors/1/relationships/books               /v1/authors/1/books
 #> 2 /v1/authors/2/relationships/books               /v1/authors/2/books
@@ -162,10 +162,10 @@ conn$route("authors/1")
 #> [1] "1973-09-02"
 #> 
 #> $data$attributes$created_at
-#> [1] "2016-01-28 00:47:36"
+#> [1] "2016-01-28 06:07:15"
 #> 
 #> $data$attributes$updated_at
-#> [1] "2016-01-28 00:47:36"
+#> [1] "2016-01-28 06:07:15"
 #> 
 #> 
 #> $data$relationships
@@ -207,10 +207,10 @@ conn$route("authors/1/books")
 #> 3  3 books                1955-10-20         Return of the King
 #> 4 11 books                1937-09-21                 The Hobbit
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-28 00:47:36   2016-01-28 00:47:36
-#> 2   2016-01-28 00:47:36   2016-01-28 00:47:36
-#> 3   2016-01-28 00:47:36   2016-01-28 00:47:36
-#> 4   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 1   2016-01-28 06:07:15   2016-01-28 06:07:15
+#> 2   2016-01-28 06:07:15   2016-01-28 06:07:15
+#> 3   2016-01-28 06:07:15   2016-01-28 06:07:15
+#> 4   2016-01-28 06:07:15   2016-01-28 06:07:15
 #>       relationships.chapters.links.self
 #> 1  /v1/authors/1/relationships/chapters
 #> 2  /v1/authors/2/relationships/chapters
@@ -284,8 +284,8 @@ conn$route("authors/1/photos")
 #> 1                  http://upload.wikimedia.org/wikipedia/commons/b/b4/Tolkien_1916.jpg
 #> 2 http://upload.wikimedia.org/wikipedia/commons/5/5b/Mabel_Suffield_Christmas_Card.jpg
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-28 00:47:36   2016-01-28 00:47:36
-#> 2   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 1   2016-01-28 06:07:15   2016-01-28 06:07:15
+#> 2   2016-01-28 06:07:15   2016-01-28 06:07:15
 #>      relationships.imageable.links.self
 #> 1 /v1/authors/1/relationships/imageable
 #> 2 /v1/authors/2/relationships/imageable
@@ -338,7 +338,7 @@ jsonlite::fromJSON("http://localhost:8000/books")
 
 
 ```r
-jsonlite::fromJSON("http://localhost:8000/books?book=1")
+jsonlite::fromJSON("http://localhost:8000/books/1")
 #> $meta
 #> $meta$total
 #> [1] 1
@@ -356,7 +356,7 @@ jsonlite::fromJSON("http://localhost:8000/books?book=1")
 
 
 ```r
-jsonlite::fromJSON("http://localhost:8000/books?book=2")
+jsonlite::fromJSON("http://localhost:8000/books/2")
 #> $meta
 #> $meta$total
 #> [1] 1

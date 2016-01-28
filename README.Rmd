@@ -122,11 +122,11 @@ jsonlite::fromJSON("http://localhost:8000/books")
 ```
 
 ```{r}
-jsonlite::fromJSON("http://localhost:8000/books?book=1")
+jsonlite::fromJSON("http://localhost:8000/books/1")
 ```
 
 ```{r}
-jsonlite::fromJSON("http://localhost:8000/books?book=2")
+jsonlite::fromJSON("http://localhost:8000/books/2")
 ```
 
 Note: This server stuff is still in infancy. Working on getting a more complete set 
