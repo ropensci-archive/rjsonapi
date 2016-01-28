@@ -3,6 +3,7 @@ sudo: required
 
 r_github_packages:
   - jimhester/covr
+  - trestletech/plumber
 
 after_success:
   - Rscript -e 'covr::codecov()'
