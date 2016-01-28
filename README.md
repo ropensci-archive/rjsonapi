@@ -124,8 +124,8 @@ conn$route("authors")
 #> 1  1 authors J. R. R. Tolkien               1892-01-03
 #> 2  2 authors    J. K. Rowling               1965-07-31
 #>   attributes.date_of_death attributes.created_at attributes.updated_at
-#> 1               1973-09-02   2016-01-28 00:35:03   2016-01-28 00:35:03
-#> 2                     <NA>   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 1               1973-09-02   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 2                     <NA>   2016-01-28 00:47:36   2016-01-28 00:47:36
 #>      relationships.books.links.self relationships.books.links.related
 #> 1 /v1/authors/1/relationships/books               /v1/authors/1/books
 #> 2 /v1/authors/2/relationships/books               /v1/authors/2/books
@@ -162,10 +162,10 @@ conn$route("authors/1")
 #> [1] "1973-09-02"
 #> 
 #> $data$attributes$created_at
-#> [1] "2016-01-28 00:35:03"
+#> [1] "2016-01-28 00:47:36"
 #> 
 #> $data$attributes$updated_at
-#> [1] "2016-01-28 00:35:03"
+#> [1] "2016-01-28 00:47:36"
 #> 
 #> 
 #> $data$relationships
@@ -207,10 +207,10 @@ conn$route("authors/1/books")
 #> 3  3 books                1955-10-20         Return of the King
 #> 4 11 books                1937-09-21                 The Hobbit
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-28 00:35:03   2016-01-28 00:35:03
-#> 2   2016-01-28 00:35:03   2016-01-28 00:35:03
-#> 3   2016-01-28 00:35:03   2016-01-28 00:35:03
-#> 4   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 1   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 2   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 3   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 4   2016-01-28 00:47:36   2016-01-28 00:47:36
 #>       relationships.chapters.links.self
 #> 1  /v1/authors/1/relationships/chapters
 #> 2  /v1/authors/2/relationships/chapters
@@ -284,8 +284,8 @@ conn$route("authors/1/photos")
 #> 1                  http://upload.wikimedia.org/wikipedia/commons/b/b4/Tolkien_1916.jpg
 #> 2 http://upload.wikimedia.org/wikipedia/commons/5/5b/Mabel_Suffield_Christmas_Card.jpg
 #>   attributes.created_at attributes.updated_at
-#> 1   2016-01-28 00:35:03   2016-01-28 00:35:03
-#> 2   2016-01-28 00:35:03   2016-01-28 00:35:03
+#> 1   2016-01-28 00:47:36   2016-01-28 00:47:36
+#> 2   2016-01-28 00:47:36   2016-01-28 00:47:36
 #>      relationships.imageable.links.self
 #> 1 /v1/authors/1/relationships/imageable
 #> 2 /v1/authors/2/relationships/imageable
@@ -308,10 +308,71 @@ Then in another R session:
 
 
 ```r
-library("httr")
-GET("http://localhost:8000/books")
-GET("http://localhost:8000/books?book=1")
-GET("http://localhost:8000/books?book=2")
+library("jsonlite")
+jsonlite::fromJSON("http://localhost:8000/books")
+#> $meta
+#> $meta$total
+#> [1] 4
+#> 
+#> 
+#> $data
+#>   id             cat                                    name
+#> 1  1 book, hardcover                     The Lightning Thief
+#> 2  2 book, paperback                     The Sea of Monsters
+#> 3  3 book, paperback Sophie's World : The Greek Philosophers
+#> 4  4 book, paperback        Lucene in Action, Second Edition
+#>               author                        series_t sequence_i genre_s
+#> 1       Rick Riordan Percy Jackson and the Olympians          1 fantasy
+#> 2       Rick Riordan Percy Jackson and the Olympians          2 fantasy
+#> 3    Jostein Gaarder                            NULL          1 fantasy
+#> 4 Michael McCandless                            NULL          1      IT
+#>   inStock price pages_i
+#> 1    TRUE  12.5     384
+#> 2    TRUE  6.49     304
+#> 3    TRUE  3.07      64
+#> 4    TRUE  30.5     475
+#> 
+#> $errors
+#> list()
 ```
+
+
+```r
+jsonlite::fromJSON("http://localhost:8000/books?book=1")
+#> $meta
+#> $meta$total
+#> [1] 1
+#> 
+#> 
+#> $data
+#>   id             cat                name       author
+#> 1  1 book, hardcover The Lightning Thief Rick Riordan
+#>                          series_t sequence_i genre_s inStock price pages_i
+#> 1 Percy Jackson and the Olympians          1 fantasy    TRUE  12.5     384
+#> 
+#> $errors
+#> list()
+```
+
+
+```r
+jsonlite::fromJSON("http://localhost:8000/books?book=2")
+#> $meta
+#> $meta$total
+#> [1] 1
+#> 
+#> 
+#> $data
+#>   id             cat                name       author
+#> 1  2 book, paperback The Sea of Monsters Rick Riordan
+#>                          series_t sequence_i genre_s inStock price pages_i
+#> 1 Percy Jackson and the Olympians          2 fantasy    TRUE  6.49     304
+#> 
+#> $errors
+#> list()
+```
+
+Note: This server stuff is still in infancy. Working on getting a more complete set 
+of routes and data.
 
 [spec]: http://jsonapi.org/format/

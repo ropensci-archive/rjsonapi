@@ -2,7 +2,6 @@
 
 export(connect)
 export(jsonapi_server)
-import(plumber)
 importFrom(R6,R6Class)
 importFrom(httr,GET)
 importFrom(httr,HEAD)
@@ -11,3 +10,4 @@ importFrom(httr,content_type)
 importFrom(httr,http_status)
 importFrom(httr,verbose)
 importFrom(jsonlite,fromJSON)
+importFrom(plumber,plumb)
