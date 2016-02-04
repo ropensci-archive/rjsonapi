@@ -75,14 +75,14 @@ connect <- function(url, version, endpt, query, ...) {
         httr::http_status(httr::HEAD(self$base_url(), self$content_type, ...))$message
       },
       routes = function(...) {
-        private$fromjson(httr::content(httr::GET(self$base_url(), self$content_type, ...), "text"))
+        private$fromjson(httr::content(httr::GET(self$base_url(), self$content_type, ...), "text", encoding = "UTF-8"))
       },
       route = function(endpt, query, error_handler = private$check, ...) {
         # query <- comp(list(include = include))
         if (missing(query)) query <- self$query
         tmp <- httr::GET(file.path(self$base_url(), endpt), self$content_type, query = query, ...)
         error_handler(tmp)
-        private$fromjson(httr::content(tmp, "text"))
+        private$fromjson(httr::content(tmp, "text", encoding = "UTF-8"))
       },
       base_url = function(...) {
         self$url
@@ -96,9 +96,9 @@ connect <- function(url, version, endpt, query, ...) {
       check = function(x, ...) {
         if (x$status_code > 300) {
           if (grepl("application/vnd.api\\+json", x$headers$`content-type`)) {
-            self$fromjson(content(x, "text"))
+            self$fromjson(content(x, "text", encoding = "UTF-8"))
           } else {
-            stop(content(x, "text"), call. = FALSE)
+            stop(content(x, "text", encoding = "UTF-8"), call. = FALSE)
           }
         }
       }

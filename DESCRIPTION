@@ -2,7 +2,7 @@ Package: rjsonapi
 Title: Consumer for APIs that Follow the 'JSONAPI' Specification
 Description: Consumer for APIs that Follow the 'JSONAPI' Specification.
     Just consumes data - does not do server side things.
-Version: 0.0.3.9000
+Version: 0.0.3.9300
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
