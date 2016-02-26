@@ -1,8 +1,11 @@
 language: r
+
 sudo: required
 
+r_packages:
+  - covr
+
 r_github_packages:
-  - jimhester/covr
   - trestletech/plumber
 
 after_success:
