@@ -14,5 +14,8 @@ Imports:
     jsonlite,
     plumber
 Suggests:
-    testthat
+    testthat,
+    covr
+Remotes:
+    trestletech/plumber
 RoxygenNote: 5.0.1
