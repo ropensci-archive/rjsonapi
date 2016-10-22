@@ -25,7 +25,7 @@ test_that("structure of output is as expected", {
   skip_on_cran()
 
   cn <- connect("https://api.labs.datacite.org")
-  aa <- cn$route("works")
+  aa <- cn$route("members")
 
   expect_is(aa, "list")
   expect_is(aa$meta, "list")
