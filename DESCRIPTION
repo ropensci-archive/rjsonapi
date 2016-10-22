@@ -2,20 +2,18 @@ Package: rjsonapi
 Title: Consumer for APIs that Follow the 'JSONAPI' Specification
 Description: Consumer for APIs that Follow the 'JSONAPI' Specification.
     Just consumes data - does not do server side things.
-Version: 0.0.3.9300
+Version: 0.0.4.9000
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
 URL: https://github.com/sckott/rjsonapi
 BugReports: https://github.com/sckott/rjsonapi/issues
 Imports:
-    httr (>= 1.0.0),
-    R6,
-    jsonlite,
-    plumber
+    httr (>= 1.2.1),
+    R6 (>= 2.2.0),
+    jsonlite (>= 1.1),
+    plumber (>= 0.3.1)
 Suggests:
     testthat,
     covr
-Remotes:
-    trestletech/plumber
 RoxygenNote: 5.0.1

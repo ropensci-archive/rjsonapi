@@ -29,22 +29,22 @@ test_that("structure of output is as expected", {
 
   expect_is(aa, "list")
   expect_is(aa$meta, "list")
-  expect_named(aa, c('meta', 'data'))
-  expect_named(aa$meta, "total")
+  expect_named(aa, c('data', 'meta'))
+  expect_type(aa$meta$total, "integer")
   expect_is(aa$data, "data.frame")
 })
 
 test_that("query parameters work", {
   skip_on_cran()
 
-  cn <- connect("https://api.labs.datacite.org")
-  aa <- cn$route("works", query = list(q = "publicationYear:[1980 TO 1982]"))
+  cn <- connect("https://api.datacite.org")
+  aa <- cn$route("works", query = list(query = "renear"))
 
   expect_is(aa, "list")
   expect_is(aa$meta, "list")
-  expect_named(aa, c('meta', 'data'))
-  expect_named(aa$meta, "total")
+  expect_named(aa, c('data', 'meta'))
+  expect_is(aa$meta$years, "list")
+  expect_named(aa$meta$publishers, c('cdl.culis'))
   expect_is(aa$data, "data.frame")
-  expect_gt(max(unlist(aa$data$attributes$issued$`date-parts`)), 1979)
-  expect_lt(max(unlist(aa$data$attributes$issued$`date-parts`)), 1983)
+  expect_true(any(grepl("renear", aa$data$attributes$author[[1]]$family, ignore.case = TRUE)))
 })

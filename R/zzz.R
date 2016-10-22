@@ -33,7 +33,7 @@ empty <- function(l) {
     length(z) == 0
   }
   tmp <- Filter(Negate(is_length_zero), l)
-  if (length(tmp) == 1 && is(tmp, "list")) {
+  if (length(tmp) == 1 && inherits(tmp, "list")) {
     tmp[[1]]
   } else {
     tmp
