@@ -28,9 +28,9 @@ does not do server side JSONAPI things.
 
 Which should start up a server. Then point your browser to e.g.:
 
-* [http://localhost:8088/v1](http://localhost:8088/v1)
-* [http://localhost:8088/v1/authors](http://localhost:8088/v1/authors)
-* [http://localhost:8088/v1/authors/1](http://localhost:8088/v1/authors/1)
+* http://localhost:8088/v1
+* http://localhost:8088/v1/authors
+* http://localhost:8088/v1/authors/1
 
 ## Install rjsonapi R client
 
