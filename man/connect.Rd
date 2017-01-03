@@ -3,34 +3,60 @@
 \name{connect}
 \alias{connect}
 \title{Connection}
-\usage{
-connect(url, version, endpt, query, ...)
-}
 \arguments{
 \item{url}{(character)Base url, e.g., \code{http://localhost:8080}}
 
 \item{version}{(character) API version, e.g, \code{v1}}
 
-\item{endpt}{(character) The route, or endpoint}
+\item{content_type}{(character) the content type to set in all request
+headers. Default: application/vnd.api+json}
 
-\item{query}{(list) A list of query parameters}
-
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[crul]{HttpClient}}}
 }
 \description{
 Connection
 }
+\details{
+\strong{Methods}
+  \describe{
+    \item{\code{status(...)}}{
+      Check server status with a HEAD request
+
+      \itemize{
+       \item ... - curl options
+      }
+    }
+    \item{\code{routes(...)}}{
+      Get routes the server supports
+
+      \itemize{
+       \item ... - curl options
+      }
+    }
+    \item{\code{route(endpt, query, include, error_handler, ...)}}{
+      Fetch a route, optional query parameters
+
+      \itemize{
+       \item endpt - The endpoint to request data from. required.
+       \item query - a set of query parameters. combined with include parameter
+       \item include - A comma-separated list of relationship paths.
+      combined with query parameter
+       \item error_handler - A function for error handling
+       \item ... - curl options
+      }
+    }
+  }
+}
 \examples{
 \dontrun{
-library("httr")
+library("crul")
 (conn <- connect("http://localhost:8088"))
 conn$url
 conn$version
 conn$content_type
 conn$status()
-conn$status(config = verbose())
 conn$routes()
-conn$routes(config = verbose())
+conn$routes(verbose = TRUE)
 
 # get data from speicific routes
 conn$route("authors")
@@ -46,14 +72,19 @@ conn$route("authors/1", include = "books")
 conn$route("authors/1", include = "photos")
 conn$route("authors/1", include = "photos.title")
 
+## set curl options on connect() call
+xx <- connect("http://localhost:8088", verbose = TRUE)
+xx$opts
+xx$status()
+
 ## errors
 ### route doesn't exist
-conn$route("foobar")
+# conn$route("foobar")
 
 ### document doesn't exist
-conn$route("authors/56")
+# conn$route("authors/56")
 
-
+## FIXME - find a public URL that works
 (conn <- connect("https://api.labs.datacite.org"))
 conn$url
 conn$version

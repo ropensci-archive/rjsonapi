@@ -1,6 +1,5 @@
 #' rjsonapi client
 #'
-#' @importFrom httr GET HEAD http_status content content_type verbose
 #' @importFrom jsonlite fromJSON
 #' @importFrom R6 R6Class
 #' @importFrom plumber plumb
