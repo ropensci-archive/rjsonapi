@@ -4,14 +4,18 @@
 \alias{connect}
 \title{Connection}
 \arguments{
-\item{url}{(character)Base url, e.g., \code{http://localhost:8080}}
+\item{url}{(character) Base url, without the version information,
+e.g., \code{http://localhost:8088}}
 
-\item{version}{(character) API version, e.g, \code{v1}}
+\item{version}{(character) API version. Default: \code{v1}}
 
 \item{content_type}{(character) the content type to set in all request
 headers. Default: application/vnd.api+json}
 
-\item{...}{Curl options passed on to \code{\link[crul]{HttpClient}}}
+\item{headers}{(list) A list of headers to be applied to each requset.}
+
+\item{...}{Curl options passed on to \code{\link[crul]{HttpClient}}. You
+can set these for all requests, or on each request - see examples.}
 }
 \description{
 Connection
@@ -77,6 +81,9 @@ conn$route("authors/1", include = "photos.title")
 xx <- connect("http://localhost:8088", verbose = TRUE)
 xx$opts
 xx$status()
+
+## set headers on initializing the client
+(conn <- connect("http://localhost:8088", headers = list(foo = "bar")))
 
 ## errors
 ### route doesn't exist

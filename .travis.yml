@@ -15,6 +15,8 @@ addons:
     packages:
       - libcurl4-openssl-dev
 
+r_check_args: "--as-cran --run-dontrun"
+
 after_success:
   - Rscript -e 'covr::codecov()'
 

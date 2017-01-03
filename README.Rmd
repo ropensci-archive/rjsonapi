@@ -16,8 +16,8 @@ knitr::opts_chunk$set(
 An R client for consuming APIs that follow the [JSONAPI spec][spec]. This library
 does not do server side JSONAPI things.
 
-* rjsonapi home: [http://jsonapi.org/](http://jsonapi.org/)
-* rjsonapi spec: [http://jsonapi.org/format/](http://jsonapi.org/format/)
+* rjsonapi home: <http://jsonapi.org/>
+* rjsonapi spec: <http://jsonapi.org/format/>
 
 ## Setup a JSONAPI
 

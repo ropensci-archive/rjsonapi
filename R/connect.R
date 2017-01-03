@@ -1,11 +1,14 @@
 #' Connection
 #'
 #' @export
-#' @param url (character)Base url, e.g., \code{http://localhost:8080}
-#' @param version (character) API version, e.g, \code{v1}
+#' @param url (character) Base url, without the version information,
+#' e.g., \code{http://localhost:8088}
+#' @param version (character) API version. Default: \code{v1}
 #' @param content_type (character) the content type to set in all request
 #' headers. Default: application/vnd.api+json
-#' @param ... Curl options passed on to \code{\link[crul]{HttpClient}}
+#' @param headers (list) A list of headers to be applied to each requset.
+#' @param ... Curl options passed on to \code{\link[crul]{HttpClient}}. You
+#' can set these for all requests, or on each request - see examples.
 #' @details
 #' \strong{Methods}
 #'   \describe{
@@ -67,6 +70,9 @@
 #' xx <- connect("http://localhost:8088", verbose = TRUE)
 #' xx$opts
 #' xx$status()
+#'
+#' ## set headers on initializing the client
+#' (conn <- connect("http://localhost:8088", headers = list(foo = "bar")))
 #'
 #' ## errors
 #' ### route doesn't exist
