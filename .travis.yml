@@ -9,7 +9,7 @@ install:
   - npm install
 
 before_install:
-  - git clone git@github.com:endpoints/endpoints-example.git
+  - git clone https://github.com/endpoints/endpoints-example.git
   - cd endpoints-example
   - npm install
   - PORT=8088 npm start
