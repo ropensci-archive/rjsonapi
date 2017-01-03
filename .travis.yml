@@ -3,6 +3,7 @@ sudo: required
 cache: packages
 
 before_install:
+  - cd ../
   - git clone https://github.com/endpoints/endpoints-example.git
   - cd endpoints-example
   - npm install
