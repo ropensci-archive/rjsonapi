@@ -38,7 +38,8 @@ Connection
 
       \itemize{
        \item endpt - The endpoint to request data from. required.
-       \item query - a set of query parameters. combined with include parameter
+       \item query - a set of query parameters. combined with include
+       parameter
        \item include - A comma-separated list of relationship paths.
       combined with query parameter
        \item error_handler - A function for error handling
@@ -83,20 +84,6 @@ xx$status()
 
 ### document doesn't exist
 # conn$route("authors/56")
-
-## FIXME - find a public URL that works
-(conn <- connect("https://api.labs.datacite.org"))
-conn$url
-conn$version
-conn$content_type
-conn$status()
-conn$status(config = verbose())
-conn$route("members")
-conn$route("datacentres")
-conn$route("works")
-## query parameters
-aa <- conn$route("works", query = list(q = "publicationYear:[1980 TO 1982]"))
-unlist(aa$data$attributes$issued$`date-parts`)
 }
 }
 

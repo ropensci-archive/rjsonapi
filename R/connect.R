@@ -28,7 +28,8 @@
 #'
 #'       \itemize{
 #'        \item endpt - The endpoint to request data from. required.
-#'        \item query - a set of query parameters. combined with include parameter
+#'        \item query - a set of query parameters. combined with include
+#'        parameter
 #'        \item include - A comma-separated list of relationship paths.
 #'       combined with query parameter
 #'        \item error_handler - A function for error handling
@@ -73,23 +74,9 @@
 #'
 #' ### document doesn't exist
 #' # conn$route("authors/56")
-#'
-#' ## FIXME - find a public URL that works
-#' (conn <- connect("https://api.labs.datacite.org"))
-#' conn$url
-#' conn$version
-#' conn$content_type
-#' conn$status()
-#' conn$status(config = verbose())
-#' conn$route("members")
-#' conn$route("datacentres")
-#' conn$route("works")
-#' ## query parameters
-#' aa <- conn$route("works", query = list(q = "publicationYear:[1980 TO 1982]"))
-#' unlist(aa$data$attributes$issued$`date-parts`)
 #' }
-connect <- function(url, version, content_type, ...) {
-  .jsapi_c$new(url, version, content_type, ...)
+connect <- function(url, version, content_type, headers, ...) {
+  .jsapi_c$new(url, version, content_type, headers, ...)
 }
 
 .jsapi_c <-
@@ -99,15 +86,25 @@ connect <- function(url, version, content_type, ...) {
       version = "v1",
       content_type = "application/vnd.api+json",
       opts = NULL,
+      headers = NULL,
       cli = NULL,
 
-      initialize = function(url, version, content_type, ...) {
+      initialize = function(url, version, content_type, headers = list(),
+                            ...) {
+
         if (!missing(url)) self$url <- url
-        self$cli <- crul:::HttpClient$new(url = self$url, opts = list(...))
+        self$cli <- crul:::HttpClient$new(
+          url = self$url,
+          opts = list(...),
+          headers = headers
+        )
         self$opts <- self$cli$opts
         if (!missing(version)) self$version <- version
         if (!missing(content_type)) self$content_type <- content_type
-        self$cli$headers <- list(`Content-Type` = self$content_type)
+        self$cli$headers <- c(
+          self$cli$headers,
+          list(`Content-Type` = self$content_type)
+        )
       },
 
       status = function(...) {

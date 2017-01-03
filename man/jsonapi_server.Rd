@@ -11,7 +11,7 @@ Start a JSONAPI server
 }
 \examples{
 \dontrun{
-jsonapi_server()
+# jsonapi_server()
 }
 }
 
