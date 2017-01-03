@@ -12,7 +12,8 @@ before_install:
   - git clone https://github.com/endpoints/endpoints-example.git
   - cd endpoints-example
   - npm install
-  - PORT=8088 npm start
+  - npm install forever
+  - PORT=8088 forever start -c "npm start" '.'
 
 addons:
   apt:
