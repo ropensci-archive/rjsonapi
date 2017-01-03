@@ -9,7 +9,7 @@ before_install:
   - npm install
   - npm install forever
   - PORT=8088 forever start -c "npm start" '.'
-  - cd ../../
+  - cd ../
 
 addons:
   apt:
