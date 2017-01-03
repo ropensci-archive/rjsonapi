@@ -2,6 +2,18 @@ language: r
 sudo: required
 cache: packages
 
+install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install
+
+before_install:
+  - git clone git@github.com:endpoints/endpoints-example.git
+  - cd endpoints-example
+  - npm install
+  - PORT=8088 npm start
+
 addons:
   apt:
     packages:
