@@ -7,5 +7,5 @@ cran-comments.md
 vignettes/figure
 NEWS.md
 README.Rmd
-cran-comments.md
 endpoints-example
+^CONDUCT\.md$

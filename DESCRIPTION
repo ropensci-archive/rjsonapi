@@ -7,8 +7,8 @@ Version: 0.0.8.9190
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
-URL: https://github.com/sckott/rjsonapi
-BugReports: https://github.com/sckott/rjsonapi/issues
+URL: https://github.com/ropensci/rjsonapi
+BugReports: https://github.com/ropensci/rjsonapi/issues
 Imports:
     crul (>= 0.2.0),
     R6 (>= 2.2.0),
@@ -17,5 +17,4 @@ Imports:
 Suggests:
     testthat,
     covr
-Remotes: ropensci/crul
 RoxygenNote: 5.0.1

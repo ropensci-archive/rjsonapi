@@ -10,8 +10,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![Build Status](https://travis-ci.org/sckott/rjsonapi.svg?branch=master)](https://travis-ci.org/sckott/rjsonapi)
-[![codecov.io](https://codecov.io/github/sckott/rjsonapi/coverage.svg?branch=master)](https://codecov.io/github/sckott/rjsonapi?branch=master)
+[![Build Status](https://travis-ci.org/ropensci/rjsonapi.svg?branch=master)](https://travis-ci.org/ropensci/rjsonapi)
+[![codecov.io](https://codecov.io/github/ropensci/rjsonapi/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rjsonapi?branch=master)
 
 An R client for consuming APIs that follow the [JSONAPI spec][spec]. This library
 does not do server side JSONAPI things.
@@ -43,7 +43,7 @@ install.packages("rjsonapi")
 Dev version
 
 ```{r eval=FALSE}
-devtools::install_github("sckott/rjsonapi")
+devtools::install_github("ropensci/rjsonapi")
 ```
 
 ```{r}
@@ -112,7 +112,7 @@ conn$route("authors/1/photos")
 
 ## Experimental - startup a server from R
 
-In one R session: 
+In one R session:
 
 ```{r eval=FALSE}
 jsonapi_server()
@@ -121,20 +121,29 @@ jsonapi_server()
 
 Then in another R session:
 
-```{r}
+```{r eval=FALSE}
 library("jsonlite")
 jsonlite::fromJSON("http://localhost:8000/books")
 ```
 
-```{r}
+```{r eval=FALSE}
 jsonlite::fromJSON("http://localhost:8000/books/1")
 ```
 
-```{r}
+```{r eval=FALSE}
 jsonlite::fromJSON("http://localhost:8000/books/2")
 ```
 
-Note: This server stuff is still in infancy. Working on getting a more complete set 
+Note: This server stuff is still in infancy. Working on getting a more complete set
 of routes and data.
 
 [spec]: http://jsonapi.org/format/
+
+## Meta
+
+* Please [report any issues or bugs](https://github.com/ropensci/rjsonapi/issues).
+* License: MIT
+* Get citation information for `rjsonapi` in R doing `citation(package = 'rjsonapi')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+[![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
