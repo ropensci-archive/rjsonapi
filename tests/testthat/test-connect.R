@@ -1,8 +1,8 @@
-context("connect")
+context("jsonapi_connect")
 
-cn <- connect(url = "http://localhost:8088")
+cn <- jsonapi_connect(url = "http://localhost:8088")
 
-test_that("connect to a jsonapi - local", {
+test_that("jsonapi_connect to a jsonapi - local", {
   skip_on_cran()
   expect_is(cn, "jsonapi_connection")
   expect_is(cn, "R6")

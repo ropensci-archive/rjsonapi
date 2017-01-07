@@ -44,7 +44,7 @@
 #' @usage NULL
 #' @examples \dontrun{
 #' library("crul")
-#' (conn <- connect("http://localhost:8088"))
+#' (conn <- jsonapi_connect("http://localhost:8088"))
 #' conn$url
 #' conn$version
 #' conn$content_type
@@ -66,13 +66,13 @@
 #' conn$route("authors/1", include = "photos")
 #' conn$route("authors/1", include = "photos.title")
 #'
-#' ## set curl options on connect() call
-#' xx <- connect("http://localhost:8088", verbose = TRUE)
+#' ## set curl options on jsonapi_connect() call
+#' xx <- jsonapi_connect("http://localhost:8088", verbose = TRUE)
 #' xx$opts
 #' xx$status()
 #'
 #' ## set headers on initializing the client
-#' (conn <- connect("http://localhost:8088", headers = list(foo = "bar")))
+#' (conn <- jsonapi_connect("http://localhost:8088", headers = list(foo = "bar")))
 #'
 #' ## errors
 #' ### route doesn't exist
@@ -81,7 +81,7 @@
 #' ### document doesn't exist
 #' # conn$route("authors/56")
 #' }
-connect <- function(url, version, content_type, headers, ...) {
+jsonapi_connect <- function(url, version, content_type, headers, ...) {
   .jsapi_c$new(url, version, content_type, headers, ...)
 }
 

@@ -9,3 +9,4 @@ NEWS.md
 README.Rmd
 endpoints-example
 ^CONDUCT\.md$
+Makefile
