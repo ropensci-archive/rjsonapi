@@ -17,9 +17,9 @@ does not do server side JSONAPI things.
 * `git clone git@github.com:endpoints/endpoints-example.git` (or via `hub`: `hub clone endpoints/endpoints-example`)
 * `cd endpoints-example`
 * `npm install`
-* `PORT=8088 npm start` (start with port 8088 instead of 8080, can use a different port)
+* `PORT=8088 npm start` (start with port 8088 instead of 8080, can use a different port) - OR, `npm install forever`, then `PORT=8088 forever start -c "npm start" '.'`
 
-Which should start up a server. Then point your browser to e.g.:
+Which starts a server. Then point your browser to e.g.:
 
 * http://localhost:8088/v1
 * http://localhost:8088/v1/authors
@@ -50,7 +50,7 @@ library("rjsonapi")
 
 
 ```r
-(conn <- connect("http://localhost:8088/v1"))
+(conn <- jsonapi_connect("http://localhost:8088/v1"))
 #> <jsonapi_connection>
 #>   Public:
 #>     base_url: function () 
@@ -131,8 +131,8 @@ conn$route("authors")
 #> 1  1 authors J. R. R. Tolkien               1892-01-03
 #> 2  2 authors    J. K. Rowling               1965-07-31
 #>   attributes.date_of_death attributes.created_at attributes.updated_at
-#> 1               1973-09-02   2017-01-05 20:48:09   2017-01-05 20:48:09
-#> 2                     <NA>   2017-01-05 20:48:09   2017-01-05 20:48:09
+#> 1               1973-09-02   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 2                     <NA>   2017-01-07 18:16:44   2017-01-07 18:16:44
 #>      relationships.books.links.self relationships.books.links.related
 #> 1 /v1/authors/1/relationships/books               /v1/authors/1/books
 #> 2 /v1/authors/2/relationships/books               /v1/authors/2/books
@@ -169,10 +169,10 @@ conn$route("authors/1")
 #> [1] "1973-09-02"
 #> 
 #> $data$attributes$created_at
-#> [1] "2017-01-05 20:48:09"
+#> [1] "2017-01-07 18:16:44"
 #> 
 #> $data$attributes$updated_at
-#> [1] "2017-01-05 20:48:09"
+#> [1] "2017-01-07 18:16:44"
 #> 
 #> 
 #> $data$relationships
@@ -214,10 +214,10 @@ conn$route("authors/1/books")
 #> 3  3 books                1955-10-20         Return of the King
 #> 4 11 books                1937-09-21                 The Hobbit
 #>   attributes.created_at attributes.updated_at
-#> 1   2017-01-05 20:48:09   2017-01-05 20:48:09
-#> 2   2017-01-05 20:48:09   2017-01-05 20:48:09
-#> 3   2017-01-05 20:48:09   2017-01-05 20:48:09
-#> 4   2017-01-05 20:48:09   2017-01-05 20:48:09
+#> 1   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 2   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 3   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 4   2017-01-07 18:16:44   2017-01-07 18:16:44
 #>       relationships.chapters.links.self
 #> 1  /v1/authors/1/relationships/chapters
 #> 2  /v1/authors/2/relationships/chapters
@@ -291,8 +291,8 @@ conn$route("authors/1/photos")
 #> 1                  http://upload.wikimedia.org/wikipedia/commons/b/b4/Tolkien_1916.jpg
 #> 2 http://upload.wikimedia.org/wikipedia/commons/5/5b/Mabel_Suffield_Christmas_Card.jpg
 #>   attributes.created_at attributes.updated_at
-#> 1   2017-01-05 20:48:09   2017-01-05 20:48:09
-#> 2   2017-01-05 20:48:09   2017-01-05 20:48:09
+#> 1   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 2   2017-01-07 18:16:44   2017-01-07 18:16:44
 #>      relationships.imageable.links.self
 #> 1 /v1/authors/1/relationships/imageable
 #> 2 /v1/authors/2/relationships/imageable
@@ -313,24 +313,32 @@ jsonapi_server()
 
 Then in another R session:
 
+Connect to the server:
+
 
 ```r
-library("jsonlite")
-jsonlite::fromJSON("http://localhost:8000/books")
+(conn <- jsonapi_connect("http://localhost:8000"))
 ```
 
+Get routes
+
 
 ```r
-jsonlite::fromJSON("http://localhost:8000/books/1")
+conn$routes()
 ```
 
+Get chapters
+
 
 ```r
-jsonlite::fromJSON("http://localhost:8000/books/2")
+conn$route("chapters")
 ```
 
 Note: This server stuff is still in infancy. Working on getting a more complete set
 of routes and data.
+
+Right now, `jsonapi_server()` only loads data that comes with this package - in the
+future it will support your own data.
 
 [spec]: http://jsonapi.org/format/
 

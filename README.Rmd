@@ -24,9 +24,9 @@ does not do server side JSONAPI things.
 * `git clone git@github.com:endpoints/endpoints-example.git` (or via `hub`: `hub clone endpoints/endpoints-example`)
 * `cd endpoints-example`
 * `npm install`
-* `PORT=8088 npm start` (start with port 8088 instead of 8080, can use a different port)
+* `PORT=8088 npm start` (start with port 8088 instead of 8080, can use a different port) - OR, `npm install forever`, then `PORT=8088 forever start -c "npm start" '.'`
 
-Which should start up a server. Then point your browser to e.g.:
+Which starts a server. Then point your browser to e.g.:
 
 * http://localhost:8088/v1
 * http://localhost:8088/v1/authors
@@ -121,21 +121,29 @@ jsonapi_server()
 
 Then in another R session:
 
-```{r eval=FALSE}
-library("jsonlite")
-jsonlite::fromJSON("http://localhost:8000/books")
-```
+Connect to the server:
 
 ```{r eval=FALSE}
-jsonlite::fromJSON("http://localhost:8000/books/1")
+(conn <- jsonapi_connect("http://localhost:8000"))
 ```
 
+Get routes
+
 ```{r eval=FALSE}
-jsonlite::fromJSON("http://localhost:8000/books/2")
+conn$routes()
+```
+
+Get chapters
+
+```{r eval=FALSE}
+conn$route("chapters")
 ```
 
 Note: This server stuff is still in infancy. Working on getting a more complete set
 of routes and data.
+
+Right now, `jsonapi_server()` only loads data that comes with this package - in the
+future it will support your own data.
 
 [spec]: http://jsonapi.org/format/
 
