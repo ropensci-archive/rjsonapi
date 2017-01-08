@@ -22,7 +22,7 @@ itself is at \url{http://jsonapi.org/format/}, with implementations at
 
 There are very few examples to see in the real world. One example
 comes from CodeClimate. Their API docs are at
-\url{https://docs.codeclimate.com/docs/api}.
+https://docs.codeclimate.com/docs/api
 }
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}

@@ -20,5 +20,5 @@
 #' @section Examples:
 #' There are very few examples to see in the real world. One example
 #' comes from CodeClimate. Their API docs are at
-#' \url{https://docs.codeclimate.com/docs/api}.
+#' https://docs.codeclimate.com/docs/api
 NULL
