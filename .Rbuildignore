@@ -5,7 +5,6 @@
 ^\.httr-oauth$
 cran-comments.md
 vignettes/figure
-NEWS.md
 README.Rmd
 endpoints-example
 ^CONDUCT\.md$
