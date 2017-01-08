@@ -1,0 +1,8 @@
+{
+  "authors": "/v1/authors?include={books,books.chapters,photos}&filter[{id,name,alive,dead,date_of_birth,date_of_death,born_before,born_after}]",
+  "books": "/v1/books?include={chapters,firstChapter,series,author,stores,photos}&filter[{author_id,series_id,date_published,published_before,published_after,title}]",
+  "chapters": "/v1/chapters?include={book}&filter[{book_id,title,ordering}]",
+  "photos": "/v1/photos?include={imageable}",
+  "series": "/v1/series?include={books,photos}&filter[{title}]",
+  "stores": "/v1/stores?include={books,books.author}"
+}
