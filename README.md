@@ -5,6 +5,7 @@ rjsonapi
 
 [![Build Status](https://travis-ci.org/ropensci/rjsonapi.svg?branch=master)](https://travis-ci.org/ropensci/rjsonapi)
 [![codecov.io](https://codecov.io/github/ropensci/rjsonapi/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rjsonapi?branch=master)
+[![cran version](http://www.r-pkg.org/badges/version/rjsonapi)](https://cran.r-project.org/package=rjsonapi)
 
 An R client for consuming APIs that follow the [JSONAPI spec][spec]. This library
 does not do server side JSONAPI things.
@@ -53,19 +54,19 @@ library("rjsonapi")
 (conn <- jsonapi_connect("http://localhost:8088/v1"))
 #> <jsonapi_connection>
 #>   Public:
-#>     base_url: function () 
+#>     base_url: function ()
 #>     cli: HttpClient, R6
 #>     content_type: application/vnd.api+json
 #>     headers: NULL
-#>     initialize: function (url, version, content_type, headers = list(), ...) 
+#>     initialize: function (url, version, content_type, headers = list(), ...)
 #>     opts: list
-#>     route: function (endpt, query = NULL, include = NULL, error_handler = private$check, 
-#>     routes: function (...) 
-#>     status: function (...) 
+#>     route: function (endpt, query = NULL, include = NULL, error_handler = private$check,
+#>     routes: function (...)
+#>     status: function (...)
 #>     url: http://localhost:8088/v1
 #>     version: v1
 #>   Private:
-#>     check: function (x, ...) 
+#>     check: function (x, ...)
 #>     fromjson: function (...)
 ```
 
@@ -102,19 +103,19 @@ Get routes (not available in a standard JSONAPI i think)
 conn$routes()
 #> $authors
 #> [1] "/v1/authors?include={books,books.chapters,photos}&filter[{id,name,alive,dead,date_of_birth,date_of_death,born_before,born_after}]"
-#> 
+#>
 #> $books
 #> [1] "/v1/books?include={chapters,firstChapter,series,author,stores,photos}&filter[{author_id,series_id,date_published,published_before,published_after,title}]"
-#> 
+#>
 #> $chapters
 #> [1] "/v1/chapters?include={book}&filter[{book_id,title,ordering}]"
-#> 
+#>
 #> $photos
 #> [1] "/v1/photos?include={imageable}"
-#> 
+#>
 #> $series
 #> [1] "/v1/series?include={books,photos}&filter[{title}]"
-#> 
+#>
 #> $stores
 #> [1] "/v1/stores?include={books,books.author}"
 ```
@@ -154,49 +155,49 @@ conn$route("authors/1")
 #> $data
 #> $data$id
 #> [1] "1"
-#> 
+#>
 #> $data$type
 #> [1] "authors"
-#> 
+#>
 #> $data$attributes
 #> $data$attributes$name
 #> [1] "J. R. R. Tolkien"
-#> 
+#>
 #> $data$attributes$date_of_birth
 #> [1] "1892-01-03"
-#> 
+#>
 #> $data$attributes$date_of_death
 #> [1] "1973-09-02"
-#> 
+#>
 #> $data$attributes$created_at
 #> [1] "2017-01-07 18:16:44"
-#> 
+#>
 #> $data$attributes$updated_at
 #> [1] "2017-01-07 18:16:44"
-#> 
-#> 
+#>
+#>
 #> $data$relationships
 #> $data$relationships$books
 #> $data$relationships$books$links
 #> $data$relationships$books$links$self
 #> [1] "/v1/authors/1/relationships/books"
-#> 
+#>
 #> $data$relationships$books$links$related
 #> [1] "/v1/authors/1/books"
-#> 
-#> 
-#> 
+#>
+#>
+#>
 #> $data$relationships$photos
 #> $data$relationships$photos$links
 #> $data$relationships$photos$links$self
 #> [1] "/v1/authors/1/relationships/photos"
-#> 
+#>
 #> $data$relationships$photos$links$related
 #> [1] "/v1/authors/1/photos"
-#> 
-#> 
-#> 
-#> 
+#>
+#>
+#>
+#>
 #> $data$links
 #> $data$links$self
 #> [1] "/v1/authors/1"
