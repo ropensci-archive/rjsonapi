@@ -2,8 +2,8 @@
 % Please edit documentation in R/rjsonapi-package.R
 \docType{package}
 \name{rjsonapi-package}
-\alias{rjsonapi}
 \alias{rjsonapi-package}
+\alias{rjsonapi}
 \title{rjsonapi client}
 \description{
 rjsonapi client
@@ -24,8 +24,8 @@ There are very few examples to see in the real world. One example
 comes from CodeClimate. Their API docs are at
 https://docs.codeclimate.com/docs/api
 }
+
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 }
 \keyword{package}
-
