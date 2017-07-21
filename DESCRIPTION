@@ -15,6 +15,5 @@ Imports:
     jsonlite (>= 1.2),
     plumber (>= 0.3.1)
 Suggests:
-    testthat,
-    covr
+    testthat
 RoxygenNote: 5.0.1

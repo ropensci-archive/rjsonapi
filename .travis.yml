@@ -15,6 +15,9 @@ addons:
     packages:
       - libcurl4-openssl-dev
 
+r_github_packages:
+  - jimhester/covr
+
 r_check_args: "--as-cran --run-dontrun"
 
 after_success:
