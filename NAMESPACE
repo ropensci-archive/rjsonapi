@@ -3,5 +3,6 @@
 export(jsonapi_connect)
 export(jsonapi_server)
 importFrom(R6,R6Class)
+importFrom(crul,HttpClient)
 importFrom(jsonlite,fromJSON)
 importFrom(plumber,plumb)

@@ -3,7 +3,7 @@ Title: Consumer for APIs that Follow the JSON API Specification
 Description: Consumer for APIs that Follow the JSON API Specification
     (<http://jsonapi.org/>). Package mostly consumes data - with experimental
     support for serving JSON API data.
-Version: 0.1.1.9200
+Version: 0.1.1.9210
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE

@@ -3,6 +3,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom R6 R6Class
 #' @importFrom plumber plumb
+#' @importFrom crul HttpClient
 #' @name rjsonapi-package
 #' @aliases rjsonapi
 #' @docType package
