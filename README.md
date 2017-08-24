@@ -51,22 +51,22 @@ library("rjsonapi")
 
 
 ```r
-(conn <- jsonapi_connect("http://localhost:8088/v1"))
+(conn <- jsonapi_connect("http://localhost:8088", "v1"))
 #> <jsonapi_connection>
 #>   Public:
-#>     base_url: function ()
+#>     base_url: function () 
 #>     cli: HttpClient, R6
 #>     content_type: application/vnd.api+json
 #>     headers: NULL
-#>     initialize: function (url, version, content_type, headers = list(), ...)
+#>     initialize: function (url, version, content_type, headers = list(), ...) 
 #>     opts: list
-#>     route: function (endpt, query = NULL, include = NULL, error_handler = private$check,
-#>     routes: function (...)
-#>     status: function (...)
-#>     url: http://localhost:8088/v1
+#>     route: function (endpt, query = NULL, include = NULL, error_handler = private$check, 
+#>     routes: function (...) 
+#>     status: function (...) 
+#>     url: http://localhost:8088
 #>     version: v1
 #>   Private:
-#>     check: function (x, ...)
+#>     check: function (x, ...) 
 #>     fromjson: function (...)
 ```
 
@@ -85,7 +85,7 @@ Get base URL
 
 ```r
 conn$base_url()
-#> [1] "http://localhost:8088/v1"
+#> [1] "http://localhost:8088"
 ```
 
 Get server status
@@ -103,19 +103,19 @@ Get routes (not available in a standard JSONAPI i think)
 conn$routes()
 #> $authors
 #> [1] "/v1/authors?include={books,books.chapters,photos}&filter[{id,name,alive,dead,date_of_birth,date_of_death,born_before,born_after}]"
-#>
+#> 
 #> $books
 #> [1] "/v1/books?include={chapters,firstChapter,series,author,stores,photos}&filter[{author_id,series_id,date_published,published_before,published_after,title}]"
-#>
+#> 
 #> $chapters
 #> [1] "/v1/chapters?include={book}&filter[{book_id,title,ordering}]"
-#>
+#> 
 #> $photos
 #> [1] "/v1/photos?include={imageable}"
-#>
+#> 
 #> $series
 #> [1] "/v1/series?include={books,photos}&filter[{title}]"
-#>
+#> 
 #> $stores
 #> [1] "/v1/stores?include={books,books.author}"
 ```
@@ -132,8 +132,8 @@ conn$route("authors")
 #> 1  1 authors J. R. R. Tolkien               1892-01-03
 #> 2  2 authors    J. K. Rowling               1965-07-31
 #>   attributes.date_of_death attributes.created_at attributes.updated_at
-#> 1               1973-09-02   2017-01-07 18:16:44   2017-01-07 18:16:44
-#> 2                     <NA>   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 1               1973-09-02   2017-08-24 22:44:53   2017-08-24 22:44:53
+#> 2                     <NA>   2017-08-24 22:44:53   2017-08-24 22:44:53
 #>      relationships.books.links.self relationships.books.links.related
 #> 1 /v1/authors/1/relationships/books               /v1/authors/1/books
 #> 2 /v1/authors/2/relationships/books               /v1/authors/2/books
@@ -155,49 +155,49 @@ conn$route("authors/1")
 #> $data
 #> $data$id
 #> [1] "1"
-#>
+#> 
 #> $data$type
 #> [1] "authors"
-#>
+#> 
 #> $data$attributes
 #> $data$attributes$name
 #> [1] "J. R. R. Tolkien"
-#>
+#> 
 #> $data$attributes$date_of_birth
 #> [1] "1892-01-03"
-#>
+#> 
 #> $data$attributes$date_of_death
 #> [1] "1973-09-02"
-#>
+#> 
 #> $data$attributes$created_at
-#> [1] "2017-01-07 18:16:44"
-#>
+#> [1] "2017-08-24 22:44:53"
+#> 
 #> $data$attributes$updated_at
-#> [1] "2017-01-07 18:16:44"
-#>
-#>
+#> [1] "2017-08-24 22:44:53"
+#> 
+#> 
 #> $data$relationships
 #> $data$relationships$books
 #> $data$relationships$books$links
 #> $data$relationships$books$links$self
 #> [1] "/v1/authors/1/relationships/books"
-#>
+#> 
 #> $data$relationships$books$links$related
 #> [1] "/v1/authors/1/books"
-#>
-#>
-#>
+#> 
+#> 
+#> 
 #> $data$relationships$photos
 #> $data$relationships$photos$links
 #> $data$relationships$photos$links$self
 #> [1] "/v1/authors/1/relationships/photos"
-#>
+#> 
 #> $data$relationships$photos$links$related
 #> [1] "/v1/authors/1/photos"
-#>
-#>
-#>
-#>
+#> 
+#> 
+#> 
+#> 
 #> $data$links
 #> $data$links$self
 #> [1] "/v1/authors/1"
@@ -215,10 +215,10 @@ conn$route("authors/1/books")
 #> 3  3 books                1955-10-20         Return of the King
 #> 4 11 books                1937-09-21                 The Hobbit
 #>   attributes.created_at attributes.updated_at
-#> 1   2017-01-07 18:16:44   2017-01-07 18:16:44
-#> 2   2017-01-07 18:16:44   2017-01-07 18:16:44
-#> 3   2017-01-07 18:16:44   2017-01-07 18:16:44
-#> 4   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 1   2017-08-24 22:44:53   2017-08-24 22:44:53
+#> 2   2017-08-24 22:44:53   2017-08-24 22:44:53
+#> 3   2017-08-24 22:44:53   2017-08-24 22:44:53
+#> 4   2017-08-24 22:44:53   2017-08-24 22:44:53
 #>       relationships.chapters.links.self
 #> 1  /v1/authors/1/relationships/chapters
 #> 2  /v1/authors/2/relationships/chapters
@@ -292,8 +292,8 @@ conn$route("authors/1/photos")
 #> 1                  http://upload.wikimedia.org/wikipedia/commons/b/b4/Tolkien_1916.jpg
 #> 2 http://upload.wikimedia.org/wikipedia/commons/5/5b/Mabel_Suffield_Christmas_Card.jpg
 #>   attributes.created_at attributes.updated_at
-#> 1   2017-01-07 18:16:44   2017-01-07 18:16:44
-#> 2   2017-01-07 18:16:44   2017-01-07 18:16:44
+#> 1   2017-08-24 22:44:52   2017-08-24 22:44:52
+#> 2   2017-08-24 22:44:52   2017-08-24 22:44:52
 #>      relationships.imageable.links.self
 #> 1 /v1/authors/1/relationships/imageable
 #> 2 /v1/authors/2/relationships/imageable

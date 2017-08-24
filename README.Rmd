@@ -54,7 +54,7 @@ library("rjsonapi")
 ## Connect
 
 ```{r}
-(conn <- jsonapi_connect("http://localhost:8088/v1"))
+(conn <- jsonapi_connect("http://localhost:8088", "v1"))
 ```
 
 ## Get API info
