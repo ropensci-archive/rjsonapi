@@ -9,3 +9,5 @@ README.Rmd
 endpoints-example
 ^CONDUCT\.md$
 Makefile
+.github
+
