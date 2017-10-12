@@ -2,14 +2,6 @@ language: r
 sudo: required
 cache: packages
 
-before_install:
-  - git clone https://github.com/endpoints/endpoints-example.git
-  - cd endpoints-example
-  - npm install
-  - npm install forever
-  - PORT=8088 forever start -c "npm start" '.'
-  - cd ../
-
 addons:
   apt:
     packages:
