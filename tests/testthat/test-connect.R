@@ -20,6 +20,7 @@ test_that("private methods are actually private", {
 
 test_that("status method is as expected", {
   skip_on_cran()
+  skip_on_travis()
   if (identical(Sys.getenv("TRAVIS"), "true")) {
     expect_equal(cn$status(), "OK (200)")
   }
@@ -27,6 +28,7 @@ test_that("status method is as expected", {
 
 test_that("routes method is as expected", {
   skip_on_cran()
+  skip_on_travis()
   if (identical(Sys.getenv("TRAVIS"), "true")) {
     aa <- cn$routes()
 
@@ -39,6 +41,7 @@ test_that("routes method is as expected", {
 
 test_that("route method is as expected", {
   skip_on_cran()
+  skip_on_travis()
   if (identical(Sys.getenv("TRAVIS"), "true")) {
     expect_error(cn$route(), "\"endpt\" is missing")
 
@@ -54,6 +57,7 @@ test_that("route method is as expected", {
 
 test_that("include parameter works", {
   skip_on_cran()
+  skip_on_travis()
   if (identical(Sys.getenv("TRAVIS"), "true")) {
     aa <- cn$route("authors/1")
     bb <- cn$route("authors/1", include = "books")
