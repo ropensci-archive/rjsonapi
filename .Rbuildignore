@@ -11,3 +11,4 @@ endpoints-example
 Makefile
 .github
 
+^codemeta\.json$
