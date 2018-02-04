@@ -28,7 +28,7 @@ japi_serializer
 JSON API Model and Serializer
 }
 \examples{
-mod <- japi("id", "name", "year", "actor_ids", 
+mod <- japi_model("id", "name", "year", "actor_ids", 
   "owner_id", "movie_type_id")
 mod
 

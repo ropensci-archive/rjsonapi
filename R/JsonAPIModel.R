@@ -8,7 +8,7 @@
 #' @param has_many variables that are many
 #' @param belongs_to belongs to type
 #' @examples
-#' mod <- japi("id", "name", "year", "actor_ids", 
+#' mod <- japi_model("id", "name", "year", "actor_ids", 
 #'   "owner_id", "movie_type_id")
 #' mod
 #' 
