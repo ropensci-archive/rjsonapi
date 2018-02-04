@@ -26,8 +26,8 @@ Kill the server by CTRL+C, ESC or similar.
 }
 \examples{
 \dontrun{
-# start server in another R session
 if (interactive()) {
+  # start a server in another R session
   jsonapi_server()
 
   # Back in this session ...

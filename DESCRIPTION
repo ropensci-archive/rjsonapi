@@ -3,7 +3,7 @@ Title: Consumer for APIs that Follow the JSON API Specification
 Description: Consumer for APIs that Follow the JSON API Specification
     (<http://jsonapi.org/>). Package mostly consumes data - with experimental
     support for serving JSON API data.
-Version: 0.1.1.9210
+Version: 0.1.2.9310
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
@@ -13,7 +13,8 @@ Imports:
     crul (>= 0.2.0),
     R6 (>= 2.2.0),
     jsonlite (>= 1.2),
-    plumber (>= 0.3.1)
+    plumber (>= 0.3.1),
+    hunspell (>= 2.9)
 Suggests:
     roxygen2 (>= 6.0.1),
     testthat
