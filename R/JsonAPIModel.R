@@ -20,7 +20,7 @@
 #' mod
 #' 
 #' # put into json api serializer
-#' x <- JApiSerializer$new(
+#' x <- japi_serializer$new(
 #'   model = mod,
 #'   type  = "movie",
 #'   attributes = c('name', 'year'),
