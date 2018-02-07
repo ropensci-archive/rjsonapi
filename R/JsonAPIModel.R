@@ -2,11 +2,6 @@
 #' 
 #' @export
 #' @param ... named parameters
-#' @param model an object of class `japi_model`
-#' @param type the type
-#' @param attributes attributes
-#' @param has_many variables that are many
-#' @param belongs_to belongs to type
 #' @examples
 #' mod <- japi_model("id", "name", "year", "actor_ids", 
 #'   "owner_id", "movie_type_id")
@@ -45,8 +40,17 @@ japi_model <- function(...) {
   )$new()
 }
 
+#' JSON API Serializer
+#' 
 #' @export
-#' @rdname japi_model
+#' @param model an object of class `japi_model`
+#' @param type the type
+#' @param attributes attributes
+#' @param has_many variables that are many
+#' @param belongs_to belongs to type
+#' @format NULL
+#' @usage NULL
+#' @details see \code{\link{japi_model}} for examples
 japi_serializer <- R6::R6Class(
   "japi_serializer",
   public = list(
