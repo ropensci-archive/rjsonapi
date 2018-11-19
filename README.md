@@ -4,6 +4,7 @@ rjsonapi
 
 
 [![Build Status](https://travis-ci.org/ropensci/rjsonapi.svg?branch=master)](https://travis-ci.org/ropensci/rjsonapi)
+[![cran checks](https://cranchecks.info/badges/worst/rjsonapi)](https://cranchecks.info/pkgs/rjsonapi)
 [![codecov.io](https://codecov.io/github/ropensci/rjsonapi/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rjsonapi?branch=master)
 [![cran version](http://www.r-pkg.org/badges/version/rjsonapi)](https://cran.r-project.org/package=rjsonapi)
 
