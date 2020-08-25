@@ -15,7 +15,7 @@ Start a JSONAPI server
 \details{
 Right now, this function doesn't take arbitrary input, but
 instead serves the same content as this JSON API example
-\url{https://github.com/endpoints/endpoints-example}. Note that not all
+https://github.com/endpoints/endpoints-example . Note that not all
 features are the same as the full \code{endpoints-example}, but most
 should work.
 

@@ -5,8 +5,8 @@
 #'
 #' @details Right now, this function doesn't take arbitrary input, but
 #' instead serves the same content as this JSON API example
-#' \url{https://github.com/endpoints/endpoints-example}. Note that not all
-#' features are the same as the full \code{endpoints-example}, but most
+#' https://github.com/endpoints/endpoints-example . Note that not all
+#' features are the same as the full `endpoints-example`, but most
 #' should work.
 #'
 #' Right now, this function serves data from static, minified JSON files,

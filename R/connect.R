@@ -2,46 +2,30 @@
 #'
 #' @export
 #' @param url (character) Base url, without the version information,
-#' e.g., \code{http://localhost:8088}
-#' @param version (character) API version. Default: \code{v1}
+#' e.g., `http://localhost:8088`
+#' @param version (character) API version. Default: `v1`
 #' @param content_type (character) the content type to set in all request
-#' headers. Default: application/vnd.api+json
+#' headers. Default: 'application/vnd.api+json'
 #' @param headers (list) A list of headers to be applied to each requset.
-#' @param ... Curl options passed on to \code{\link[crul]{HttpClient}}. You
+#' @param ... Curl options passed on to [crul::verb-GET]. You
 #' can set these for all requests, or on each request - see examples.
 #' @details
-#' \strong{Methods}
-#'   \describe{
-#'     \item{\code{status(...)}}{
-#'       Check server status with a HEAD request
-#'
-#'       \itemize{
-#'        \item ... - curl options
-#'       }
-#'     }
-#'     \item{\code{routes(...)}}{
-#'       Get routes the server supports
-#'
-#'       \itemize{
-#'        \item ... - curl options
-#'       }
-#'     }
-#'     \item{\code{route(endpt, query, include, error_handler, ...)}}{
-#'       Fetch a route, optional query parameters
-#'
-#'       \itemize{
-#'        \item endpt - The endpoint to request data from. required.
-#'        \item query - a set of query parameters. combined with include
+#' **Methods**
+#' 
+#' - `status(...)`: Check server status with a HEAD request
+#'     - `...`: curl options passed on to [crul::verb-GET]
+#' - `routes(...)`: Get routes the server supports
+#'     - `...`: curl options passed on to [crul::verb-GET]
+#' - `route(endpt, query, include, error_handler, ...)`: Fetch a route,
+#' optional query parameters
+#'     - `endpt`: The endpoint to request data from. required.
+#'     - `query`: a set of query parameters. combined with include
 #'        parameter
-#'        \item include - A comma-separated list of relationship paths.
+#'     - `include`: A comma-separated list of relationship paths.
 #'       combined with query parameter
-#'        \item error_handler - A function for error handling
-#'        \item ... - curl options
-#'       }
-#'     }
-#'   }
-#' @format NULL
-#' @usage NULL
+#'     - `error_handler`: A function for error handling
+#'     - `...`: curl options passed on to [crul::verb-GET]
+#' 
 #' @examples \dontrun{
 #' library("crul")
 #' (conn <- jsonapi_connect("http://localhost:8088"))
@@ -99,7 +83,7 @@ jsonapi_connect <- function(url, version, content_type, headers, ...) {
                             ...) {
 
         if (!missing(url)) self$url <- url
-        self$cli <- crul:::HttpClient$new(
+        self$cli <- crul::HttpClient$new(
           url = self$url,
           opts = list(...),
           headers = headers

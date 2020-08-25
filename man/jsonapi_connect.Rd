@@ -3,18 +3,21 @@
 \name{jsonapi_connect}
 \alias{jsonapi_connect}
 \title{Connection}
+\usage{
+jsonapi_connect(url, version, content_type, headers, ...)
+}
 \arguments{
 \item{url}{(character) Base url, without the version information,
-e.g., \code{http://localhost:8088}}
+e.g., \verb{http://localhost:8088}}
 
 \item{version}{(character) API version. Default: \code{v1}}
 
 \item{content_type}{(character) the content type to set in all request
-headers. Default: application/vnd.api+json}
+headers. Default: 'application/vnd.api+json'}
 
 \item{headers}{(list) A list of headers to be applied to each requset.}
 
-\item{...}{Curl options passed on to \code{\link[crul]{HttpClient}}. You
+\item{...}{Curl options passed on to \link[crul:verb-GET]{crul::verb-GET}. You
 can set these for all requests, or on each request - see examples.}
 }
 \description{
@@ -22,35 +25,27 @@ Connection
 }
 \details{
 \strong{Methods}
-  \describe{
-    \item{\code{status(...)}}{
-      Check server status with a HEAD request
-
-      \itemize{
-       \item ... - curl options
-      }
-    }
-    \item{\code{routes(...)}}{
-      Get routes the server supports
-
-      \itemize{
-       \item ... - curl options
-      }
-    }
-    \item{\code{route(endpt, query, include, error_handler, ...)}}{
-      Fetch a route, optional query parameters
-
-      \itemize{
-       \item endpt - The endpoint to request data from. required.
-       \item query - a set of query parameters. combined with include
-       parameter
-       \item include - A comma-separated list of relationship paths.
-      combined with query parameter
-       \item error_handler - A function for error handling
-       \item ... - curl options
-      }
-    }
-  }
+\itemize{
+\item \code{status(...)}: Check server status with a HEAD request
+\itemize{
+\item \code{...}: curl options passed on to \link[crul:verb-GET]{crul::verb-GET}
+}
+\item \code{routes(...)}: Get routes the server supports
+\itemize{
+\item \code{...}: curl options passed on to \link[crul:verb-GET]{crul::verb-GET}
+}
+\item \code{route(endpt, query, include, error_handler, ...)}: Fetch a route,
+optional query parameters
+\itemize{
+\item \code{endpt}: The endpoint to request data from. required.
+\item \code{query}: a set of query parameters. combined with include
+parameter
+\item \code{include}: A comma-separated list of relationship paths.
+combined with query parameter
+\item \code{error_handler}: A function for error handling
+\item \code{...}: curl options passed on to \link[crul:verb-GET]{crul::verb-GET}
+}
+}
 }
 \examples{
 \dontrun{

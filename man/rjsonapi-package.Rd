@@ -4,28 +4,28 @@
 \name{rjsonapi-package}
 \alias{rjsonapi-package}
 \alias{rjsonapi}
-\title{rjsonapi client}
+\title{rjsonapi}
 \description{
-rjsonapi client
+Consumer for APIs that follow the JSON API specification
 }
 \section{JSON API}{
 
 JSON API is a specification for building APIs (Application Programming
 Interfaces) in JSON (Javascript Object Notation).
 
-The JSON API website is at \url{http://jsonapi.org/}. The specification
-itself is at \url{http://jsonapi.org/format/}, with implementations at
-\url{http://jsonapi.org/implementations/}.
+The JSON API website is at https://jsonapi.org/ . The specification
+itself is at https://jsonapi.org/format/, with implementations at
+https://jsonapi.org/implementations/
 }
 
 \section{Examples}{
 
 There are very few examples to see in the real world. One example
 comes from CodeClimate. Their API docs are at
-https://docs.codeclimate.com/docs/api
+https://developer.codeclimate.com/#overview
 }
 
 \author{
-Scott Chamberlain \email{myrmecocystus@gmail.com}
+Scott Chamberlain
 }
 \keyword{package}
